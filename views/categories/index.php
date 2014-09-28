@@ -1,0 +1,1 @@
+<h2>Hello , this is the categories index view page</h2>
