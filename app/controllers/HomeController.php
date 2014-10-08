@@ -19,5 +19,9 @@ class HomeController extends BaseController {
 	{
 		return View::make('hello');
 	}
-
+	public function helloUser($id) {
+		$user = User::find($id);
+		$author = $thread->author()->first()->username;
+		
+	}
 }

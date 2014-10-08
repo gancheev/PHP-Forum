@@ -4,6 +4,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+<div class="well">
 	<h1>New thread</h1>
 
 	<form action="<?php echo URL::route('forum-store-thread', $id); ?>" method="post">
@@ -14,7 +15,7 @@
 
 		<div class="form-group">
 			<label for="body">Body: </label>
-			<textarea class="form-control" name="body" id="body"></textarea>
+			<textarea class="form-control" rows="12" name="body" id="body"></textarea>
 		</div>
 		<?php echo Form::token(); ?>
 
@@ -22,5 +23,6 @@
 			<input type="submit" value="Save Thread" class="btn btn-primary">
 		</div>
 	</form>
+</div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

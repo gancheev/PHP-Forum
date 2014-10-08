@@ -3,13 +3,19 @@
 <head>
 	@section('head')
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	@show	
 </head>
 <body>
-	<div class="navbar">
+	<header>
 		<div class="container">
+		This is The header
+		</div>
+	</header>	
+
+	<div class="navbar">
+		<div class="container containerTop">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
 					<span class="icon-bar"> </span>
@@ -36,16 +42,38 @@
 		</div>
 	</div>
 		@if(Session::has('success'))
-		<div class="alert alert-success">{{ Session::get('success') }}</div>
+		<div class="container"><div class="alert alert-success">{{ Session::get('success') }}</div></div>
 	@elseif(Session::has('fail'))
 		<div class="alert alert-danger">{{ Session::get('fail') }}</div>
 	@endif
 
-	<div class="container">@yield('content')</div>
+	<div class="container">
+		@if(!Auth::check())
+				<div class="well">
+					<p class="text-center">You are not registered. If you want to post in the forum , please
+					 <a href="{{ URL::route('getCreate') }}">register</a>!</p>
+				</div>
+			@else
+				<div class="well">
+					<p>Wellcome </p>
+					 
+				</div>
+			@endif
+		@yield('content')
 
+	@section('footer')
+	
+	<h4>This is the footer</h4>
+
+	@show
+</div>
 	@section('javascript')
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	
+</script>
+
 	@show
+
 </body>
 </html>

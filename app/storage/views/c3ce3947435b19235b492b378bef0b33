@@ -40,4 +40,11 @@
 		</form>
 	</div>
 <?php $__env->stopSection(); ?>
+<?php $__env->startSection('javascript'); ?>
+<script type="text/javascript" src="/js/jquery.complexify.js"></script>
+	<script type="text/javascript">
+ 	 $("#password").complexify(options, callback(valid, complexity){
+    alert("Password complexity: " + complexity);
+ 	 });
+ 	 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

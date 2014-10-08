@@ -8,7 +8,7 @@
 @section('content')
 
 @if(Auth::check() && Auth::user()->isAdmin())
-	<a href="#" class="btn btn-default" data-toggle="modal" data-target="#group_form">Add Group!</a>
+	<a href="#" class="btn btn-success " data-toggle="modal" data-target="#group_form">Add Group!</a>
 @endif
 
 @foreach($groups as $group)

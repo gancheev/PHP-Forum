@@ -26,4 +26,9 @@ $(document).ready(function ()
 	{
 		$("#btn_delete_category").prop('href', '/forum/category/' + event.target.id + '/delete');
 	});
+
+	$(".delete_thread").click(function(event)
+	{
+		$("#btn_delete_thread").prop('href', '/forum/thread/' + event.target.id + '/delete');
+	});
 });

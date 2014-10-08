@@ -18,6 +18,9 @@ class ForumController extends BaseController
 			return Redirect::route('forum-home')->with('fail', "That category doesn't exist.");
 		}
 		$threads = $category->threads()->get();
+		if ($threads->count() < 1) {
+			$message = true;
+		}
 
 		return View::make('forum.category')->with('category', $category)->with('threads', $threads);
 	}
@@ -132,6 +135,27 @@ class ForumController extends BaseController
 		{
 			return Redirect::route('forum-home')->with('fail', 'An error occured while deleting the category.');
 		}
+	}
+	public function deleteThread($id)
+	{
+		$thread = ForumThread::find($id);
+		
+
+		$deleteThread = true;
+
+		if($thread->count() > 0)
+		{
+			$deleteThread = $thread->delete();
+		}
+		if ($deleteThread)
+		{
+			return Redirect::route('forum-home')->with('success', 'The thread was deleted.');
+		}
+		else
+		{
+			return Redirect::route('forum-home')->with('fail', 'An error occured while deleting the thread.');
+		}
+
 	}
 
 	public function storeCategory($id)

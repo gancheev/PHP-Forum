@@ -38,3 +38,10 @@
 		</form>
 	</div>
 @stop
+@section('javascript')
+<script type="text/javascript" src="/js/jquery.complexify.js"></script>
+	<script type="text/javascript">
+ 	 $("#password").complexify(options, callback(valid, complexity){
+    alert("Password complexity: " + complexity);
+ 	 });
+ 	 @stop
