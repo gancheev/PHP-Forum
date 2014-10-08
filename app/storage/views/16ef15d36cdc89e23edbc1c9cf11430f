@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<?php $__env->startSection('head'); ?>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<?php echo $__env->yieldSection(); ?>	
+</head>
+<body>
+	<div class="navbar">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+				</button>
+				<a href="<?php echo URL::route('home'); ?>" class="navbar-brand">MyForum</a>
+			</div>
+			<div class="navbar-collapse collapse navbar-responsive-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="<?php echo URL::route('home'); ?>">Home</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<?php if(!Auth::check()): ?>
+							<li><a href="<?php echo URL::route('getCreate'); ?>">Register</a></li>
+							<li><a href="<?php echo URL::route('getLogin'); ?>">Login</a></li>
+						<?php else: ?>
+							<li><a href="<?php echo URL::route('getLogout'); ?>">Logout</a></li>
+						<?php endif; ?>
+
+					</ul>
+			</div>
+		</div>
+	</div>
+	<?php echo $__env->yieldContent('content'); ?>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?php $__env->startSection('head'); ?>
+	@parent
+	<title>Home page</title>
+<?php $__env->stopSection(); ?> 
+
+<?php $__env->startSection('content'); ?>
+	
+
+	<?php if(Session::has('success')): ?>
+		<div class="alert alert-success"><?php echo Session::get('success'); ?></div>
+	<?php elseif(Session::has('fail')): ?>
+		<div class="alert alert-danger"><?php echo Session::get('fail'); ?></div>
+	<?php endif; ?>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

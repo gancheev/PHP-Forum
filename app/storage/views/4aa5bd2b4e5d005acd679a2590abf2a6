@@ -1,0 +1,15 @@
+<?php $__env->startSection('head'); ?>
+	@parent
+	<title>Forum | <?php echo $thread->title; ?></title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<div class="well">
+		<h1><?php echo $thread->title; ?></h1>
+		<h4>By: <?php echo $author; ?> on <?php echo $thread->created_at; ?></h4>
+		<hr>
+		<p><?php echo nl2br(BBCode::parse($thread->body)); ?></p>
+	</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
