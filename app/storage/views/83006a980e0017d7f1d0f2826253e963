@@ -8,43 +8,40 @@
 	<?php echo $__env->yieldSection(); ?>	
 </head>
 <body>
+		
 	<header>
-		<div class="container">
-		This is The header
-		</div>
-	</header>	
+			<div class="navbar">
+				<div class="container containerTop">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+							<span class="icon-bar"> </span>
+							<span class="icon-bar"> </span>
+							<span class="icon-bar"> </span>
+						</button>
+						<a href="<?php echo URL::route('home'); ?>" class="navbar-brand">MyForum</a>
+					</div>
+					<div class="navbar-collapse collapse navbar-responsive-collapse">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="<?php echo URL::route('home'); ?>">Home</a></li>
+								<li class="active"><a href="<?php echo URL::route('forum-home'); ?>">Forum</a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<?php if(!Auth::check()): ?>
+									<li><a href="<?php echo URL::route('getCreate'); ?>">Register</a></li>
+									<li><a href="<?php echo URL::route('getLogin'); ?>">Login</a></li>
+								<?php else: ?>
+									<li><a href="<?php echo URL::route('getLogout'); ?>">Logout</a></li>
+								<?php endif; ?>
 
-	<div class="navbar">
-		<div class="container containerTop">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-					<span class="icon-bar"> </span>
-					<span class="icon-bar"> </span>
-					<span class="icon-bar"> </span>
-				</button>
-				<a href="<?php echo URL::route('home'); ?>" class="navbar-brand">MyForum</a>
+							</ul>
+					</div>
+				</div>
 			</div>
-			<div class="navbar-collapse collapse navbar-responsive-collapse">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="<?php echo URL::route('home'); ?>">Home</a></li>
-						<li class="active"><a href="<?php echo URL::route('forum-home'); ?>">Forum</a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<?php if(!Auth::check()): ?>
-							<li><a href="<?php echo URL::route('getCreate'); ?>">Register</a></li>
-							<li><a href="<?php echo URL::route('getLogin'); ?>">Login</a></li>
-						<?php else: ?>
-							<li><a href="<?php echo URL::route('getLogout'); ?>">Logout</a></li>
-						<?php endif; ?>
-
-					</ul>
-			</div>
-		</div>
-	</div>
+	</header>
 		<?php if(Session::has('success')): ?>
 		<div class="container"><div class="alert alert-success"><?php echo Session::get('success'); ?></div></div>
 	<?php elseif(Session::has('fail')): ?>
-		<div class="alert alert-danger"><?php echo Session::get('fail'); ?></div>
+		<div class="container"><div class="alert alert-danger"><?php echo Session::get('fail'); ?></div></div>
 	<?php endif; ?>
 
 	<div class="container">
@@ -55,16 +52,18 @@
 				</div>
 			<?php else: ?>
 				<div class="well">
-					<p>Wellcome </p>
+					<p><h2 class="text-center">Hello,dear user</h2></p>
 					 
 				</div>
 			<?php endif; ?>
 		<?php echo $__env->yieldContent('content'); ?>
 
 	<?php $__env->startSection('footer'); ?>
-	
+	<div class="well footer">
+		<div class="php">
 	<h4>This is the footer</h4>
-
+		</div>
+	</div>
 	<?php echo $__env->yieldSection(); ?>
 </div>
 	<?php $__env->startSection('javascript'); ?>

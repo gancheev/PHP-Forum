@@ -4,7 +4,12 @@
 <?php $__env->stopSection(); ?> 
 
 <?php $__env->startSection('content'); ?>
-	
+	<h1 class="text-center">News</h1>
+	<section>
+		<article><div class="well news"> <img src="/images/image.jpg" class="img-responsive "> This is some text This is some text This is some text This is some text This is some text </div></article>
+		<article><div class="well news"> <img src="/images/image.jpg" class="img-responsive "> This is some text This is some text This is some text This is some text This is some text </div></article>
+	</section>
+
 
 	<?php if(Session::has('success')): ?>
 		<div class="alert alert-success"><?php echo Session::get('success'); ?></div>

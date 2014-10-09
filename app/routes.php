@@ -35,10 +35,12 @@ Route::group(array('prefix' => '/forum'), function()
 	Route::group(array('before' => 'auth'), function()
 	{
 		Route::get('/thread/{id}/new', array('uses' => 'ForumController@newThread', 'as' => 'forum-get-new-thread'));
+		Route::get('/comment/{id}/new', array('uses' => 'ForumController@newComment', 'as' => 'forum-get-new-comment'));
 
 		Route::group(array('before' => 'csrf'), function()
 		{
 			Route::post('/thread/{id}/new', array('uses' => 'ForumController@storeThread', 'as' => 'forum-store-thread'));
+			Route::post('/comment/{id}/new', array('uses' => 'ForumController@storeComment', 'as' => 'forum-store-comment'));
 		});
 	});
 });

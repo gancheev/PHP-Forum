@@ -230,4 +230,39 @@ class ForumController extends BaseController
 			}
 		}
 	}
+	public function newComment($id)
+	{
+		return View::make('forum.newcomments')->with('id',$id);
+	}
+	public function storeComments($id)
+	{	$category = ForumCategory::find($id);
+		
+		if ($thread == null)
+		{
+			Redirect::route('forum-get-new-comment')->with('fail', "You posted to an invalid thread.");
+		}
+
+		$validator = Validator::make(Input::all(), array(
+			'body'  => 'required|min:10|max:65000'
+		));
+		if ($validator->fails()) {
+			
+			return Redirect::route('forum-get-new-comment', $id)->withInput()->withErrors($validator)->with('fail', "Your input doesn't match the requirements");
+		}
+		else
+		{
+			$comment = new ForumComment;
+			$comment->body = Input::get('body');
+			$comment->thread_id = $category->thread_id;
+			$comment->category_id = $id;
+			$comment->author_id = Auth::user()->id;
+		}
+		if ($comment->save()) {
+			return Redirect::route('forum-thread', $thread->id)->with('success', "Your thread has been saved.");	
+				}
+		else
+		{
+			return Redirect::route('forum-get-new-thread', $id)->with('fail', "An error occured while saving your thread.")->withInput();
+		}
+	}
 }

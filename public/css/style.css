@@ -1,5 +1,6 @@
 body {
 	background-image: url('../images/bgr.jpg');
+	background-size: cover;
 }
 .navbar-brand {
 	color:black;
@@ -17,6 +18,40 @@ body {
 {
 	padding: 0;
 }
-.adjust {
-	height: 400px;
+
+.footer 
+{
+	margin-top:20px;
+	position: relative;
+	bottom: 0;
+	color:white;
+	background-color:rgba(192,192,192,0.2);
+}
+section 
+{
+	display: inline-block;
+	width: 100%;
+}
+article
+{	
+
+	width: 50%;
+	float: left;
+	padding: 10px;
+	
+}
+article img 
+{
+	float:left;
+}
+.news {
+	border-radius: 10px;
+}
+.php 
+{
+	background-image: url('/images/php.jpg');
+	background-repeat: no-repeat;
+	min-height: 100px;
+    background-position: right;
+    
 }
